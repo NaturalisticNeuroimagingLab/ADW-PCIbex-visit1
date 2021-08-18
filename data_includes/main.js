@@ -1,5 +1,5 @@
 // PCIbex OCD Online Movie Study 
-// Visit 2
+// Visit 1
 // Simon Frew, NNL, June 2021
 
 /* document overview  
@@ -72,7 +72,7 @@ CheckPreloaded()
 
 // ---------------- Movie 1 / Movie 2 Trial 
 // template 
-Template("visit2-movieURL-full.csv", row =>
+Template("visit1-movieURL-full.csv", row =>
 	newTrial("movieFull-"+row.id,
 		newText("instructions-calibration", "Eye tracking calibaration will begin. Make sure to look at the green dots as they appear!")
 			.center()
@@ -205,7 +205,7 @@ newTrial("instructions-movieClips",
  
   
 // template  
-Template("visit2-movieURL-clips.csv", row =>
+Template("visit1-movieURL-clips.csv", row =>
 	newTrial("movieClips-"+row.id,
 	
 		// arrow listening functions
