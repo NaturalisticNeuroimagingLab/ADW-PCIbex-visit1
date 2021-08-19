@@ -225,17 +225,32 @@ Template("visit1-movieURL-clips.csv", row =>
 	                       .call()
 	        )
 		, 
-
-		// ---------initialize content 
-		newText("instructions-1", "Remember to use the up and down arrow keys to change the slider!")
+        // ---------set initial distress rating
+		newText("instructions--1", "Please your initial distress rating. Remember to use the arrow keys!")
 	        .center()
 	        .print()
+	    ,
+		// load distress rating slider
+	    newSlider("initialDistressSlider", 10)
+			.center()
+			.vertical()
+			.slider()
+			.log("last") 
+			.size("5vw", "20vh")  
+			.print() 
 	    ,
 		newButton("Click to begin the next movie")
 		    .center()
 		    .print()
 		    .wait()  
 	    , 
+	    newVar("initialDistressRating") // save initial rating as slider starting point
+	        .set(getSlider("initialDistressSlider"))
+	        .global()
+        ,
+	    clear()
+	    ,
+	    
 		// load video url
 		newVideo("movieClip", row.movieURL)
 			.size("80vw", "80vh") 
@@ -243,11 +258,12 @@ Template("visit1-movieURL-clips.csv", row =>
 			.log()
 		, 
 		// load distress rating slider
-	    newSlider("distressSlider", 10)
+	    newSlider("distressSlider", 10) 
 			.vertical()
 			.slider()
 			.log("all") 
 			.size("5vw", "20vh")  
+			.default(getVar("initialDistressRating")) // set initial rating as starting point
 	    ,
 
 		// ---------display run experiemnt
